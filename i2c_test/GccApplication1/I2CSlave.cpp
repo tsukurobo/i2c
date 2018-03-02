@@ -1,9 +1,5 @@
 /*
- * CPPFile1.cpp
- *
- * Created: 2018/01/21 19:05:14
- *  Author: magon
- https://github.com/g4lvanix/I2C-slave-lib
+ https://github.com/thegouger/avr-i2c-slave
  */ 
 
 #include <util/twi.h>

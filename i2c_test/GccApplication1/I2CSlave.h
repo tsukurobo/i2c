@@ -1,9 +1,5 @@
 /*
- * IncFile1.h
- *
- * Created: 2018/01/21 19:03:03
- *  Author: magon
- https://github.com/g4lvanix/I2C-slave-lib
+ https://github.com/thegouger/avr-i2c-slave
  */ 
 
 

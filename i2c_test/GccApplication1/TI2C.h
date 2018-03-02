@@ -1,13 +1,13 @@
 /*
- * I2CRobosa.h
+ * TI2C.h
  *
  * Created: 2018/02/18 18:51:12
  *  Author: ip.sakura
  */ 
 
 
-#ifndef I2CROBOSA_H_
-#define I2CROBOSA_H_
+#ifndef TI2C_H_
+#define TI2C_H_
 
 #include "I2CSlave.h"
 
@@ -17,21 +17,26 @@ union Data {
 	uint8_t uint_buf[SIZE];
 	char str_buf[SIZE];
 };
+
 union Data_Bit {
 	uint8_t uint_buf;
 	char str_buf;
 };
 	
-class I2CRobosa
+class TI2C
 {
 	Data buf;
 	public:
-	I2CRobosa(uint8_t address);
+	TI2C(uint8_t address, void (*recv)(char*), void (*req)());
 	void send_str(char* buf);
 	void get_str(char* buf);
-	void I2C_received(uint8_t received_data);
-	void I2C_requested();	
+	void received(char* str);
+	void requested();
+	private:
+	void char_received(uint8_t received_data);
+	void (*recv_cb)(char*);
+	void (*req_cb)();
 };
 
 
-#endif /* I2CROBOSA_H_ */
+#endif /* TI2C_H_ */
