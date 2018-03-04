@@ -31,7 +31,15 @@ char str[] = "hello avr world";
 
 void i2c_received_cb(char* str) {
 	// print to lcd
-	
+	DDRC = 0b00000110;
+	if (str[0] == '0'){
+		DDRC = 0b00001111;			
+	} else if (str[0] == '1'){
+		DDRC = 0b00000111;
+	} else {
+		DDRC = 0b00000000;
+		
+	}
 }
 
 void i2c_request_cb() {
@@ -39,18 +47,21 @@ void i2c_request_cb() {
 	
 }
 
-TI2C ti2c = TI2C(I2C_ADDR,i2c_received_cb, i2c_request_cb);
 
 
 void setup()
 {
 	int i = 0;
-	initHard();
-	lcd_init();
-	for (i = 0; i < 15; i++) {
-		lcd_putc(str[i]);
-		
-	}
+	TI2C_init(I2C_ADDR,i2c_received_cb, i2c_request_cb);
+
+	//initHard();
+	//lcd_init();
+	//for (i = 0; i < 15; i++) {
+	//	lcd_putc(str[i]);
+	//}
+	PORTC = 0xff;
+	DDRC = 0b00001111;
+	
 }
 
 int main()
