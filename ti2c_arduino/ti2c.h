@@ -5,9 +5,10 @@
 class Ti2c{
   public:
   Ti2c(uint8_t i2caddr);
-  void sendStr();
-  void receiveStr();
+  void sendStr(char buf[]);
+  void receiveStr(char buf[]);
   private:
+  uint8_t addr;
 };
 #endif
 
