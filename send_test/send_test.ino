@@ -1,10 +1,11 @@
 // i2cで書き込むだけのコード。
 #include <Wire.h>
 
-int incomingByte = 0;	// 受信データ用
+byte incomingByte = 0;	// 受信データ用
 
 void setup() {
      Serial.begin(9600);	// 9600bpsでシリアルポートを開く
+      Wire.begin();
 }
 
 void loop() {
