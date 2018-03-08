@@ -11,7 +11,7 @@
 
 #include "I2CSlave.h"
 
-#define SIZE 1024
+#define SIZE 512
 
 union Data {
 	uint8_t uint_buf[SIZE];
@@ -24,7 +24,7 @@ union Data_Bit {
 };
 
 	//Data TI2C_buf;
-	void TI2C_init(uint8_t address, void (*recv)(char*), void (*req)());
+	void TI2C_init(uint8_t address, void (*recv)(char*), void (*req)(char*));
 	void TI2C_send_str(char* buf);
 	void TI2C_get_str(char* buf);
 	void TI2C_received(char* str);

@@ -16,6 +16,7 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include <util/delay.h>
+#include <string.h>
 
 #include "hd44780.h"
 
@@ -38,22 +39,18 @@ void i2c_received_cb(char* str) {
 		DDRC = 0b00000111;
 	} else {
 		DDRC = 0b00000000;
-		
 	}
 }
 
-void i2c_request_cb() {
-	// print to lcd
-	
+void i2c_request_cb(char* buf) {
+	// set TI2C_buf_send.str_buf
+	strcpy(buf, "Hello World\n");  
 }
-
-
 
 void setup()
 {
 	int i = 0;
 	TI2C_init(I2C_ADDR,i2c_received_cb, i2c_request_cb);
-
 	//initHard();
 	//lcd_init();
 	//for (i = 0; i < 15; i++) {
@@ -61,7 +58,6 @@ void setup()
 	//}
 	PORTC = 0xff;
 	DDRC = 0b00001111;
-	
 }
 
 int main()
@@ -73,9 +69,6 @@ int main()
 	}
 }
 
-
-
-
 void initHard() {
 	DDRB = 0xff;
 	PORTB = 0;
@@ -83,7 +76,4 @@ void initHard() {
 	PORTC = 0;
 	DDRD = 0xf0;
 	PORTD = 0;
-	
-	
-	
 }
