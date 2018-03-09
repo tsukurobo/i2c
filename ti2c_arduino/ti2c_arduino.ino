@@ -17,10 +17,10 @@ void loop(){
   ti2c.sendStr("0");
   ti2c.receiveStr(buf);
   Serial.println(buf);
-  delay(1000);
-  ti2c.sendStr("1234"); 
-  delay(1000);
-  ti2c.sendStr("2"); 
-  delay(1000);
+  delay(100);
+  //ti2c.sendStr("1234"); 
+  //delay(1000);
+  //ti2c.sendStr("2"); 
+  //delay(1000);
 
 }

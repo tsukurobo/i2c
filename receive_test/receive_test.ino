@@ -12,11 +12,11 @@ void loop() {
   i = 0;
   while(1){
     Wire.requestFrom(0x10, 1);
-      //Serial.print(buf);
+      Serial.print(buf);
         byte val = Wire.read();
 
     while (Wire.available()) {
-      //Serial.print(val);
+      Serial.print(val);
       b_buf[i++] = val;
     }
     if (val == '$'){
